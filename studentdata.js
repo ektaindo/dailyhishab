@@ -8,7 +8,7 @@ async function viewStudentRecordTable(){
     console.log(stdData);
     let fee = stdData.stdFee
     stdt = stdt + fee;
-    stdtrs += "<tr><td>"+ stdData.stdName +"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.StdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+"</td></tr>"
+    stdtrs += "<tr><td>"+ stdData.stdName +"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+"</td></tr>"
   }
   let studentTemplate = "<table><tr><th>Student Name</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th></tr>" + stdtrs + "</table>"
   viewStdtable.innerHTML = studentTemplate
