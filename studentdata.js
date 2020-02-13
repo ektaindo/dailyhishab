@@ -1,3 +1,5 @@
+const firebaseWrapper = new FirebaseWrapper()
+
 async function viewStudentRecordTable(){
   let dbStdRows = await firebaseWrapper.getAll('studentRecord')
   let viewStdtable = document.getElementById('Studenttable')

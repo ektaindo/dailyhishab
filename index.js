@@ -1,5 +1,8 @@
 // write a function for on click function
 // log all values available in the input text boxes and date picker
+
+const firebaseWrapper = new FirebaseWrapper()
+
 async function addTemplate(){
   let dbRows = await firebaseWrapper.getAll('transections')
   let viewtable = document.getElementById('expensetable')

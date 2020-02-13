@@ -2,25 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Students Record</title>
   </head>
-  <script type="text/javascript" src="db.js"> </script>
-  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
-  <script>
-    var firebaseConfig = {
-      apiKey: "AIzaSyCgxanprg7ChdLXDuRzW9iD-JPru3WhDAM",
-      authDomain: "dailyhishab.firebaseapp.com",
-      databaseURL: "https://dailyhishab.firebaseio.com",
-      projectId: "dailyhishab",
-      storageBucket: "dailyhishab.appspot.com",
-      messagingSenderId: "900223792040",
-      appId: "1:900223792040:web:a6f6d4ce0ed6ec367ba39d",
-      measurementId: "G-XTBS2QPP0W"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const firebaseWrapper = new FirebaseWrapper(db)
-  </script>
   <body>
     <h1> Student Record</h1><a href="index.html">Home Page</a><br>
     <div class="" id="totalFee">0 </div>
@@ -41,6 +24,8 @@
     <button type="button" name="" onclick="resetSTDRecord()">Reset Student Record</button><br>
     <h2>View Student Record</h2>
     <div id = "Studenttable" class=""></div>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+    <script type="text/javascript" src="db.js"> </script>
     <script type="text/javascript" src="studentdata.js"> </script>
 
   </body>

@@ -1,6 +1,18 @@
 class FirebaseWrapper{
-  constructor(db){
-    this.db = db;
+  constructor(){
+    let firebaseConfig = {
+      apiKey: "AIzaSyCgxanprg7ChdLXDuRzW9iD-JPru3WhDAM",
+      authDomain: "dailyhishab.firebaseapp.com",
+      databaseURL: "https://dailyhishab.firebaseio.com",
+      projectId: "dailyhishab",
+      storageBucket: "dailyhishab.appspot.com",
+      messagingSenderId: "900223792040",
+      appId: "1:900223792040:web:a6f6d4ce0ed6ec367ba39d",
+      measurementId: "G-XTBS2QPP0W"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    this.db = firebase.firestore();
   }
 
   async insert(collectionName, row){
