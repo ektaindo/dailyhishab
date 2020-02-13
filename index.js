@@ -1,54 +1,51 @@
 // write a function for on click function
 // log all values available in the input text boxes and date picker
-let rows = []
+async function addTemplate(){
+  let dbRows = await firebaseWrapper.getAll('transections')
+  let viewtable = document.getElementById('expensetable')
+  let trs = ""
+  let t = 0
+  for(let i =0; i<dbRows.length; i++){
+    let data = dbRows[i]
+    console.log(data);
+    let price = parseInt(data.amount)
+    console.log(typeof price);
+    t += price
+    trs += "<tr><td>"+ data.name +"</td><td>"+ data.amount+"</td><td>"+data.date+"</td><td>"+data.categories+"</td></tr>"
+  }
+
+  let template = "<table><tr><th>Name</th><th>Amount</th><th>Date</th><th>Category</th></tr>" + trs + "</table>"
+  viewtable.innerHTML = template
+  let tot = document.getElementById("total")
+  tot.innerHTML = t
+}
   async function pickInputValue(){
 
     let elem = document.getElementById('demo1')
     let name = elem.value
-    console.log(name);
+    console.log('name', name);
     let elem2= document.getElementById("demo2")
     let amount = elem2.value
-    console.log(amount);
+    console.log('amount', amount);
     let elem3= document.getElementById("demo3")
     let date = elem3.value
-    console.log(date);
+    console.log('date', date);
     let elem4 = document.getElementById("drpbtn")
     let categories = elem4.value
-    console.log(categories);
+    console.log('categories', categories);
     console.log(name.length, amount.length, date.length);
+
     if (name == "" || amount == "" || date == "" || categories == "" || amount == "0") {
       alert("Please fill all details")
       return;
     }
+
     let row =  {name, amount, date, categories}
-    rows.push(row)
 
-    let trs = ""
-    let t = 0
-    for(let i =0; i<rows.length; i++){
-      let data = rows[i]
-      console.log(data);
-      let price = parseInt(data.amount)
-      console.log(typeof price);
-      t += price
-      trs += "<tr><td>"+ data.name +"</td><td>"+ data.amount+"</td><td>"+data.date+"</td><td>"+data.categories+"</td></tr>"
-    }
+    let insert = await firebaseWrapper.insert('transections', row)
+    addTemplate()
 
-    let template = "<table><tr><th>Name</th><th>Amount</th><th>Date</th><th>Category</th></tr>" + trs + "</table>"
-    let table2 = document.getElementById("expensetable")
-    let tot = document.getElementById("total")
-    table2.innerHTML = template
-    tot.innerHTML = t
-    
-    // return firebaseWrapper.insert('transections', row)
-    // .then((data)=>{
-    //   console.log('insertion done', data);
-    // })
-    // .catch((err)=>{
-    //   console.log(err);
-    // })
-    // let rows = await firebaseWrapper.getAll('transections')
-    // console.log('rows', rows);
+
   }
 
 function resetData(){
@@ -65,6 +62,9 @@ function resetData(){
   elem4.value=""
   console.log(elem4.value);
 }
+
+addTemplate()
+
 
   // function pickInputValue(){
   //   console.log('hello from pickInputValue');

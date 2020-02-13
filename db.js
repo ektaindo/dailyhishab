@@ -3,8 +3,9 @@ class FirebaseWrapper{
     this.db = db;
   }
 
-  insert(collectionName, row){
-    return this.db.collection(collectionName).add(row)
+  async insert(collectionName, row){
+    let insert = await  this.db.collection(collectionName).add(row)
+    return insert
   }
 
   async getAll(collectionName){
