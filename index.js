@@ -1,7 +1,8 @@
 // write a function for on click function
 // log all values available in the input text boxes and date picker
 let rows = []
-  function pickInputValue(){
+  async function pickInputValue(){
+
     let elem = document.getElementById('demo1')
     let name = elem.value
     console.log(name);
@@ -21,6 +22,7 @@ let rows = []
     }
     let row =  {name, amount, date, categories}
     rows.push(row)
+
     let trs = ""
     let t = 0
     for(let i =0; i<rows.length; i++){
@@ -37,6 +39,16 @@ let rows = []
     let tot = document.getElementById("total")
     table2.innerHTML = template
     tot.innerHTML = t
+    
+    // return firebaseWrapper.insert('transections', row)
+    // .then((data)=>{
+    //   console.log('insertion done', data);
+    // })
+    // .catch((err)=>{
+    //   console.log(err);
+    // })
+    // let rows = await firebaseWrapper.getAll('transections')
+    // console.log('rows', rows);
   }
 
 function resetData(){
