@@ -17,7 +17,7 @@ async function addTemplate(){
   let template = "<table><tr><th>Name</th><th>Amount</th><th>Date</th><th>Category</th></tr>" + trs + "</table>"
   viewtable.innerHTML = template
   let tot = document.getElementById("total")
-  tot.innerHTML = t
+  tot.innerHTML = "Total:"+t
 }
   async function pickInputValue(){
 
