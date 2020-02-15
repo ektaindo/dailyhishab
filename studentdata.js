@@ -1,5 +1,3 @@
-const firebaseWrapper = new FirebaseWrapper()
-
 async function viewStudentRecordTable(){
   let dbStdRows = await firebaseWrapper.getAll('studentRecord')
   let viewStdtable = document.getElementById('Studenttable')
@@ -47,7 +45,7 @@ async function pickStdInputValue(){
   let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse}
 
   let insert = await firebaseWrapper.insert('studentRecord', studentRecordrow)
-  viewStudentRecordTable()
+  viewStudentRecordTable();
 
 }
  function resetSTDRecord(){
@@ -70,4 +68,4 @@ async function pickStdInputValue(){
    elem6.value=""
    console.log(elem6.value);
  }
-viewStudentRecordTable();
+viewStudentRecordTable()

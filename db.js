@@ -38,3 +38,5 @@ class FirebaseWrapper{
     return this.db.collection(collectionName).doc(docId).update(doc)
   }
 }
+
+const firebaseWrapper = new FirebaseWrapper()

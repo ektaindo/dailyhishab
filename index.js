@@ -1,8 +1,6 @@
 // write a function for on click function
 // log all values available in the input text boxes and date picker
 
-const firebaseWrapper = new FirebaseWrapper()
-
 async function addTemplate(){
   let dbRows = await firebaseWrapper.getAll('transections')
   let viewtable = document.getElementById('expensetable')
@@ -17,8 +15,7 @@ async function addTemplate(){
     trs += "<tr><td>"+ data.name +"</td><td>"+ data.amount+"</td><td>"+data.date+"</td><td>"+data.categories+"</td></tr>"
   }
 
-  let template = "<table><tr><th>Name</th><th>Amount</th><th>Date</th><th>Category</th></tr>" + trs + "</table>"
-  viewtable.innerHTML = template
+  
   let tot = document.getElementById("total")
   tot.innerHTML = "Total:"+t
 }
