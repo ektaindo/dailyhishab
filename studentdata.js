@@ -1,22 +1,3 @@
-async function viewStudentRecordTable(){
-  let dbStdRows = await firebaseWrapper.getAll('studentRecord')
-  let viewStdtable = document.getElementById('Studenttable')
-  let stdtrs =""
-  let stdt = 0
-  for (let i = 0; i < dbStdRows.length; i++) {
-    let stdData = dbStdRows[i]
-    console.log(stdData);
-    let fee = stdData.stdFee
-    stdt = stdt + fee;
-    stdtrs += "<tr><td>"+ stdData.stdName +"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+"</td></tr>"
-  }
-  let studentTemplate = "<table><tr><th>Student Name</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th></tr>" + stdtrs + "</table>"
-  viewStdtable.innerHTML = studentTemplate
-  let stdtotalfee = document.getElementById("totalFee")
-  stdtotalfee.innerHTML = "Total:" + stdt;
-
-}
-
 async function pickStdInputValue(){
   let stdElem = document.getElementById("Stddemo1")
   let stdName = stdElem.value
@@ -45,7 +26,7 @@ async function pickStdInputValue(){
   let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse}
 
   let insert = await firebaseWrapper.insert('studentRecord', studentRecordrow)
-  viewStudentRecordTable();
+    alert("Student data submitted successfully")
 
 }
  function resetSTDRecord(){
@@ -68,4 +49,3 @@ async function pickStdInputValue(){
    elem6.value=""
    console.log(elem6.value);
  }
-viewStudentRecordTable()
