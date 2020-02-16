@@ -9,10 +9,10 @@ async function viewExpensetable(){
     let tableview = expenseview[i]
     srNo = 1 + i;
     let totalAmount = parseInt(expenseview[i].amount)
-    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td></tr>"
+    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+"</td></tr>"
     total += totalAmount
   }
-  let template = "<table><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th></tr>" + trs + "</table>"
+  let template = "<table><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th></tr>" + trs + "</table>"
   viewExtable.innerHTML = template
   let tot = document.getElementById("total")
   tot.innerHTML = "Total:"+ total

@@ -6,20 +6,25 @@
   </head>
 <body>
 
- <h1> Add Expense</h1> <a href="studentdata.html">Student Record</a>
- <a href="viewExpense.html">Expense Table view</a>
+ <h1> Add Expense</h1> <a href="studentdata.html">Student Record</a><br><br>
+ <a href="viewExpense.html">Expense Table view</a><br><br>
  <div class="">
-<input id = "demo1" type="text" name="Name" value=""> </br>
-<input id = "demo2" type="text" name="Amount" value=""></br>
-<input id="demo3" type="date" value=""></br>
+<input id = "demo1" type="text" name="Name" value="" placeholder="Name"> </br>
+<input id = "demo2" type="text" name="Amount" value="" placeholder="Amount"></br>
+<input id="demo3" type="date" value="" placeholder="Date"></br>
 <select id = "drpbtn" type="dropdown" name="Category" value="">
-<option value = "Category">Categories</option>
+<option value = "">Select Categories</option>
 <option value = "Grocery">Groceries</option>
   <option value="Clothing">Clothing</option>
     <option value="Dining Out">Dining Out</option>
       <option value="Medical">Medical</option>
         <option value="Travel">Travel</option>
 </select></br>
+<select id="paidBy" type="dropdown" name="Paidby" >
+  <option value="">Select Paid By</option>
+  <option value="PaidByYou"> Paid By You</option>
+  <option value="PaidByOther"> Paid By Other</option>
+</select><br>
 <button type="button" name="" onclick="pickInputValue()">Add Expense</button></br>
 <button type="button" name="" onclick="resetData()">Reset Data</button></br>
 </div>

@@ -5,14 +5,17 @@
     <title>Students Record</title>
   </head>
   <body>
-    <h1> Student Record</h1><a href="index.html">Home Page</a><br><a href="studentTableview.html">Student Record Table view</a><br>
+    <h1> Student Record</h1><a href="index.html">Expense Data Entry</a><br><br><a href="studentTableview.html">Student Record Table view</a><br><br>
   <div>
-    <label>Student Name:<input id = "Stddemo1" type="text" name="StdName" value=""></label><br>
-    <label>Student Father's Name:<input id = "Stddemo2" type="text" name="StdFName" value=""></label><br>
-    <label>Student Mother's Name:<input id = "Stddemo3" type="text" name="StdMName" value=""></label><br>
-    <label>Student Fee:<input id = "Stddemo4" type="text" name="StdFee" value=""></label><br>
-    <label>Studen DOB:<input id="stddemo5" type="date" name = "StdDOB" value=""></label><br>
+    <label>Student Name:<input id = "Stddemo1" type="text" name="StdName" value="" placeholder="Enter Name"></label><br>
+    <label>Student DOB:<input id="stddemo5" type="date" name = "StdDOB" value="" placeholder="Date Of Birth"></label><br>
+    <label>Student Gender:</label><input id="stdgen" type="radio" name="gender" value="male">Male
+    <input id="stdfgen" type="radio" name="gender" value="Female">Female</label><br>
+    <label>Student Father's Name:<input id = "Stddemo2" type="text" name="StdFName" value="" placeholder="Enter Father's Name"></label><br>
+    <label>Student Mother's Name:<input id = "Stddemo3" type="text" name="StdMName" value="" placeholder="Enter Mother's Name"></label><br>
+    <label>Student Fee:<input id = "Stddemo4" type="text" name="StdFee" value="" placeholder="Enter Fee"></label><br>
     <label> Student Course:<select id = "stddrpbtn" type="dropdown" name="Course" value="">
+    <option value = "">Select Course</option>
     <option value = "BCA">BCA</option>
     <option value = "MCA">MCA</option>
       <option value="B.Com">B.Com</option>

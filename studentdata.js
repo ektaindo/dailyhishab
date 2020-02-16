@@ -2,6 +2,12 @@ async function pickStdInputValue(){
   let stdElem = document.getElementById("Stddemo1")
   let stdName = stdElem.value
   console.log('StudentName',stdName);
+  let stdGenElem = document.getElementById("stdgen")
+  let stdGen = stdGenElem.value
+  console.log("Student Gender",stdGen);
+  let stdGendElem = document.getElementById("stdfgen")
+  let stdGender = stdGendElem.value
+  console.log("Student Gender",stdGender);
   let stdFElem = document.getElementById("Stddemo2")
   let stdFName = stdFElem.value
   console.log("StudentFather'sName",stdFName);
@@ -18,16 +24,24 @@ async function pickStdInputValue(){
   let stdCourse = stdCourseElem.value
   console.log("StudentCourse",stdCourse);
 
-  if (stdName == "" || stdFName == "" || stdMName == "" || stdFee == "0" || stdDob == "" || stdCourse=="") {
+let gender = ''
+if (stdGen == 'male') {
+      gender = stdGen
+}else if(stdGender == 'Female'){
+  gender = stdGender
+}
+
+console.log(gender);
+  if (stdName == "" || stdFName == "" || stdMName == "" || stdFee == "0" || stdDob == "" || stdCourse=="" || gender == '' ) {
     alert("Please fill all details")
     return;
   }
 
-  let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse}
+  let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
 
   let insert = await firebaseWrapper.insert('studentRecord', studentRecordrow)
     alert("Student data submitted successfully")
-
+resetSTDRecord()
 }
  function resetSTDRecord(){
    let stdElem = document.getElementById('Stddemo1')
@@ -48,4 +62,9 @@ async function pickStdInputValue(){
    let elem6= document.getElementById("stddrpbtn")
    elem6.value=""
    console.log(elem6.value);
+
+   let stdGenElem = document.getElementById("stdgen")
+    stdGenElem.checked = false
+   let stdGendElem = document.getElementById("stdfgen")
+   stdGendElem.checked = false
  }

@@ -8,14 +8,22 @@ async function viewStudentRecordTable(){
     let stdData = dbStdRows[i]
     srNumb = 1 + i
     console.log(stdData);
-    let fee = stdData.stdFee
+    let fee = 0
+    if(stdData.stdFee> 0){
+      fee = stdData.stdFee
+    }
     stdt = stdt + fee;
-    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+"</td></tr>"
+    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+"</td><td><button type='button' name='' onclick='deleteRow("+i+")'>Delete</button><br></td></tr>"
   }
-  let studentTemplate = "<table><tr><th>Sr.No</th><th>Student Name</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th></tr>" + stdtrs + "</table>"
+  let studentTemplate = "<table><tr><th>Sr.No</th><th>Student Name</th><th>Gender</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th><th>Delete</th></tr>" + stdtrs + "</table>"
   viewStdtable.innerHTML = studentTemplate
   let stdtotalfee = document.getElementById("totalFee")
   stdtotalfee.innerHTML = "Total:" + stdt;
 
 }
 viewStudentRecordTable()
+
+function deleteRow(del){
+console.log("hello", del);
+
+}
