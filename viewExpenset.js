@@ -8,7 +8,10 @@ async function viewExpensetable(){
   for (var i = 0; i < expenseview.length; i++) {
     let tableview = expenseview[i]
     srNo = 1 + i;
-    let totalAmount = parseInt(expenseview[i].amount)
+    let totalAmount = 0
+    if (expenseview[i].amount > 0) {
+      totalAmount = expenseview[i].amount
+        }
     trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+"</td></tr>"
     total += totalAmount
   }

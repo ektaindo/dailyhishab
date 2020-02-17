@@ -6,7 +6,7 @@
     let name = elem.value
     console.log('name:', name);
     let elem2= document.getElementById("demo2")
-    let amount = elem2.value
+    let amount = parseInt(elem2.value)
     console.log('amount:', amount);
     let elem3= document.getElementById("demo3")
     let date = elem3.value
