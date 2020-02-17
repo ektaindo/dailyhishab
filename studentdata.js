@@ -3,10 +3,10 @@ async function pickStdInputValue(){
   let stdName = stdElem.value
   console.log('StudentName',stdName);
   let stdGenElem = document.getElementById("stdgen")
-  let stdGen = stdGenElem.value
+  let stdGen = stdGenElem.checked
   console.log("Student Gender",stdGen);
   let stdGendElem = document.getElementById("stdfgen")
-  let stdGender = stdGendElem.value
+  let stdGender = stdGendElem.checked
   console.log("Student Gender",stdGender);
   let stdFElem = document.getElementById("Stddemo2")
   let stdFName = stdFElem.value
@@ -25,10 +25,10 @@ async function pickStdInputValue(){
   console.log("StudentCourse",stdCourse);
 
 let gender = ''
-if (stdGen == 'male') {
-      gender = stdGen
-}else if(stdGender == 'Female'){
-  gender = stdGender
+if (stdGen == true) {
+      gender = 'Male'
+}else if(stdGender == true){
+  gender = 'Female'
 }
 
 console.log(gender);
@@ -36,12 +36,15 @@ console.log(gender);
     alert("Please fill all details")
     return;
   }
-
+if (isNaN(stdFee)) {
+  alert("Entered fee data is not valid")
+  return;     
+}
   let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
 
   let insert = await firebaseWrapper.insert('studentRecord', studentRecordrow)
     alert("Student data submitted successfully")
-resetSTDRecord()
+    resetSTDRecord()
 }
  function resetSTDRecord(){
    let stdElem = document.getElementById('Stddemo1')

@@ -23,17 +23,23 @@
       alert("Please fill all details")
       return;
     }
-    let row =  {name, amount, date, categories, payment}
- let getdata = await firebaseWrapper.getAll('transections')
- console.log(typeof(getdata));
- console.log("ExpenseData:", getdata);
-    let insert = await firebaseWrapper.insert('transections', row)
-        let getExData = await firebaseWrapper.getAll('transections')
-if (getdata.length +  1 == getExData.length) {
-  alert("Expense data submitted successfully")
-  resetData()
-}
+
+    let num = document.getElementById("demo2").value;
+    if (isNaN(num)) {
+       alert("input amount data not valid")
+    }else {
+      let row =  {name, amount, date, categories, payment}
+      let getdata = await firebaseWrapper.getAll('transections')
+      console.log(typeof(getdata));
+      console.log("ExpenseData:", getdata);
+      let insert = await firebaseWrapper.insert('transections', row)
+      let getExData = await firebaseWrapper.getAll('transections')
+      if (getdata.length +  1 == getExData.length) {
+        alert("Expense data submitted successfully")
+        resetData()
       }
+    }
+}
 
 function resetData(){
   let elem = document.getElementById('demo1')
