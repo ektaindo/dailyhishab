@@ -35,7 +35,7 @@ async function deleteExpRow(del){
 }
 async function editExpRow(edt){
   console.log(`hello anoop`, edt)
-  viewExpensetable()
+  location.href = 'editexpense.html?uId='+edt
 }
 
 viewExpensetable()

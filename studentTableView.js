@@ -13,7 +13,7 @@ async function viewStudentRecordTable(){
       fee = stdData.stdFee
     }
     stdt = stdt + fee;
-    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><button type='button' name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><td><button type='button' name='' onclick='editStRow("${stdData.uId}")'>Edit Row</button></td><br></tr>`
+    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><button type='button' name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><td><button type='button' name='' onclick='editStdntRow("${stdData.uId}")'>Edit Row</button></td><br></tr>`
   }
   if (dbStdRows.length == 0) {
     document.getElementById('Studenttable').innerHTML = "<h2>Data Not Found</h2>"
@@ -35,8 +35,8 @@ async function deleteRow(del){
   viewStudentRecordTable()
 }
 
-async function editStRow(ed){
-  console.log(`hello ekta`, ed);
-  viewStudentRecordTable()
+async function editStdntRow(edt){
+  console.log(`hello`, edt)
+  location.href = 'editstudentrecord.html?uId='+edt
 }
 viewStudentRecordTable()

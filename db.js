@@ -17,6 +17,7 @@ class FirebaseWrapper{
 
   async insert(collectionName, row){
     row.uId = this.uuidv4()
+    row.timestamp = new Date().getTime()
     let insert = await  this.db.collection(collectionName).doc(row.uId).set(row)
     return insert
   }
@@ -35,9 +36,15 @@ class FirebaseWrapper{
     return await this.db.collection(collectionName).doc(docId).delete()
   }
 
-  async update(collectionName, docId, doc){
-    return this.db.collection(collectionName).doc(docId).update(doc)
+  async update(collectionName, rowId, row){
+    return this.db.collection(collectionName).doc(rowId).update(row)
   }
+
+  async getRow(collectionName, rowId){
+    let doc =  await this.db.collection(collectionName).doc(rowId).get()
+    let data = doc.data()
+    return data
+    }
 
   uuidv4() {
     let x = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+<h2>edit expense</h2>
+  <div class="">
+     <input id = "demo1" type="text" name="Name" value="" placeholder="Name"> </br>
+     <input id = "demo2" type="text" name="Amount" value="" placeholder="Amount"></br>
+     <input id="demo3" type="date" value="" placeholder="Date"></br>
+     <select id = "drpbtn" type="dropdown" name="Category" value="">
+     <option value = "">Select Categories</option>
+     <option value = "Grocery">Groceries</option>
+       <option value="Clothing">Clothing</option>
+         <option value="Dining Out">Dining Out</option>
+           <option value="Medical">Medical</option>
+             <option value="Travel">Travel</option>
+     </select></br>
+     <select id="paidBy" type="dropdown" name="Paidby" >
+       <option value="">Select Paid By</option>
+       <option value="PaidByYou"> Paid By You</option>
+       <option value="PaidByOther"> Paid By Other</option>
+     </select><br><br></div>
+     <div>
+     <button type="button" name="" onclick="pickInputValue()">Update Expense</button></br>
+   </div>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+    <script type="text/javascript" src="db.js"> </script>
+    <script type="text/javascript" src="editexpense.js"> </script>
+  </body>
+</html>
