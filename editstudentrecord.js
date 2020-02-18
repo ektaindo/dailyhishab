@@ -76,8 +76,7 @@ if (isNaN(stdFee)) {
   return;
 }
   let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
-
-  let insert = await firebaseWrapper.update('studentRecord', uId, studentRecordrow)
+  let update = await firebaseWrapper.update('studentRecord', uId, studentRecordrow)
     alert("Student data Updated successfully")
     location.href = `studentTableview.html`
 }

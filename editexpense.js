@@ -54,14 +54,10 @@ async function pickInputValue(){
   if (isNaN(num)) {
      alert("input amount data not valid")
      return;
-  }else {
+  }
     let row =  {name, amount, date, categories, payment}
-    let getdata = await firebaseWrapper.getAll('transections')
-    console.log(typeof(getdata));
-    console.log("ExpenseData:", getdata);
-    let insert = await firebaseWrapper.update('transections', uId, row)
+    let update = await firebaseWrapper.update('transections', uId, row)
     alert("Expense data updated successfully")
-    }
     location.href = `viewExpense.html`
 
   //TODO pick all elements
