@@ -10,7 +10,7 @@ function getUIdFromstudentUrl() {
 }
 let uId = getUIdFromstudentUrl()
 
-async function getstRow(rowId) {
+async function getRow(rowId) {
   let stRow = await firebaseWrapper.getRow('studentRecord', rowId)
   console.log(stRow);
   console.log(typeof stRow);
@@ -81,4 +81,4 @@ if (isNaN(stdFee)) {
     location.href = `studentTableview.html`
 }
 
-getstRow(uId)
+getRow(uId)
