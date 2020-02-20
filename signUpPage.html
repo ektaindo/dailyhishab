@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Login<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    </div>
+    </nav>
+
+
+    <div class="container-fluid">
+    <h2>SignUp Page</h2>
+    <div class="">
+      <label for="fullname">Full Name:</label><input id="fullname" type="text" name="" value=""><br>
+      <label for="dob">Date of Birth:</label><input id="dob" type="date" name="" value=""><br>
+      <label for="email">Email Id:</label><input id="emailid" type="text" name="" value=""><br>
+      <label for="pass">Password:</label><input id="pass1" type="password" name="" value=""><br>
+      <label for="confpass">Confirm Password:</label><input id="confirmpass" type="password" name="" value=""><br>
+    </div>
+    <div class="">
+      <button id="signup" type="button" name="button" class="btn btn-success btn-sm" onclick="signUp()">SignUp</button>
+      <button id="reset" type="button" name="button" class="btn btn-success btn-sm" onclick="resetdata()">Reset</button>
+    </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+    <script type="text/javascript" src="db.js"> </script>
+    <script type="text/javascript" src="signUpPage.js"> </script>
+    <script type="text/javascript" src="index.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -2,15 +2,50 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Students Record</title>
   </head>
   <body>
-    <h1> Student Record</h1><a href="index.html">Expense Data Entry</a><br><br><a href="studentTableview.html">Student Record Table view</a><br><br>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="index.html">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="addexpense.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Expenses
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="addexpense.html">Add Expense</a>
+          <a class="dropdown-item" href="viewExpense.html">View Expense Table</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="studentdata.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Student Record
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="studentdata.html">Student Record Entry</a>
+          <a class="dropdown-item" href="studentTableview.html">View Student Table</a>
+        </div>
+      </li>
+    </ul>
+      <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout">Logout</button>
+  </div>
+  </nav>
+
+    <div class="container">
+    <h1> Student Record</h1><br><br>
   <div>
     <label>Student Name:<input id = "Stddemo1" type="text" name="StdName" value="" placeholder="Enter Name"></label><br>
     <label>Student DOB:<input id="stddemo5" type="date" name = "StdDOB" value="" placeholder="Date Of Birth"></label><br>
-    <label>Student Gender:</label><input id="stdgen" type="radio" name="gender" value="Male"><label for="male">Male</label>
-                                  <input id="stdfgen" type="radio" name="gender" value="Female"><label for="female">Female</label><br>
+    <label>Student Gender:</label><input id="stdgen" type="radio" name="gender" value="Male" autocomplete="off"><label for="male" class="btn btn-secondary">Male</label>
+                                  <input id="stdfgen" type="radio" name="gender" value="Female" autocomplete="off"><label for="female" class="btn btn-secondary">Female</label><br>
     <label>Student Father's Name:<input id = "Stddemo2" type="text" name="StdFName" value="" placeholder="Enter Father's Name"></label><br>
     <label>Student Mother's Name:<input id = "Stddemo3" type="text" name="StdMName" value="" placeholder="Enter Mother's Name"></label><br>
     <label>Student Fee:<input id = "Stddemo4" type="text" name="StdFee" value="" placeholder="Enter Fee"></label><br>
@@ -23,13 +58,16 @@
           <option value="BDS">BDS</option>
             <option value="B.tech">B.Tech</option>
     </select></label><br><br></div>
-    <div>
-    <button type="button" name="" onclick="pickStdInputValue()">Add Student Record</button><br>
-    <button type="button" name="" onclick="resetSTDRecord()">Reset Student Record</button><br><br>
+    <div class="container">
+    <button type="button" name="" onclick="pickStdInputValue()" class="btn btn-success btn-sm">Add Student Record</button><br><div>
+    <button type="button" name="" class="btn btn-primary btn-sm" onclick="resetSTDRecord()">Reset Student Record</button><br><br>
   </div>
+</div>
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
     <script type="text/javascript" src="db.js"> </script>
     <script type="text/javascript" src="studentdata.js"> </script>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

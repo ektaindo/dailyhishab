@@ -12,7 +12,7 @@ async function viewExpensetable(){
     if (expenseview[i].amount > 0) {
       totalAmount = expenseview[i].amount
     }
-    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
+    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
     total += totalAmount
   }
   if (expenseview.length == 0) {

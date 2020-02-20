@@ -13,6 +13,7 @@ class FirebaseWrapper{
 
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.firestore();
+    this.auth = firebase.auth();
   }
 
   async insert(collectionName, row){
@@ -44,7 +45,19 @@ class FirebaseWrapper{
     let doc =  await this.db.collection(collectionName).doc(rowId).get()
     let data = doc.data()
     return data
-    }
+  }
+
+  async login(email, password){
+    return await this.auth.signInWithEmailAndPassword(email, password)
+  }
+
+  async signup(email, password){
+    return await this.auth.createUserWithEmailAndPassword(email, password)
+  }
+
+  async sendResetPasswordEmail(email){
+    return await this.auth.sendPasswordResetEmail(email)
+  }
 
   uuidv4() {
     let x = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

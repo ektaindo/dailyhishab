@@ -13,7 +13,7 @@ async function viewStudentRecordTable(){
       fee = stdData.stdFee
     }
     stdt = stdt + fee;
-    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><button type='button' name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><td><button type='button' name='' onclick='editStdntRow("${stdData.uId}")'>Edit Row</button></td><br></tr>`
+    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><td><button class="btn btn-primary" type='button' name='' onclick='editStdntRow("${stdData.uId}")'>Edit Row</button></td><br></tr>`
   }
   if (dbStdRows.length == 0) {
     document.getElementById('Studenttable').innerHTML = "<h2>Data Not Found</h2>"
