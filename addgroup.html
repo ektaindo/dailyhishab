@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <title>Daily Hishab</title>
+  <style media="screen">
+  .center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid #007BFF;
+  padding: 10px;
+  }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="index.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="addexpense.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Expenses
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="addexpense.html">Add Expense</a>
+            <a class="dropdown-item" href="viewExpense.html">View Expense Table</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="studentdata.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Student Record
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="studentdata.html">Student Record Entry</a>
+            <a class="dropdown-item" href="studentTableview.html">View Student Table</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="addgroup.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Group Record
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="addgroup.html">Group Record Entry</a>
+            <a class="dropdown-item" href="viewgroup.html">View Group Table</a>
+          </div>
+        </li>
+      </ul>
+      <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+
+  <div class="card center" style="width: 20rem;">
+    <div class="card-body">
+      <h3 class="card-title">Add Group</h3>
+      <label>Group Name:</label><input id = "grpnm" type="text" name="Name" value="" placeholder="Enter Group Name"> </br>
+      <label>Type of Group:</label><select id = "grptype" type="dropdown" name="typeofgrp" value="">
+        <option value = "">Select Type</option>
+        <option value = "Apartment">Apartment</option>
+        <option value="Trip">Trip</option>
+        <option value="Other">Other</option>
+      </select></br>
+      <label>Members:</label><input id = "emailgrmem" type="text" name="email" value="" placeholder="Enter , seprated emails"> </br>
+      <div>
+        <button type="button" name="" class="btn btn-success btn-sm" onclick="addGroup()">Add Group</button><button type="button" style="" name="" class="btn btn-primary btn-sm" onclick="resetData()">Reset Data</button></br><br>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
+  <script type="text/javascript" src="db.js"> </script>
+  <script type="text/javascript" src="addgroup.js"> </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -60,8 +60,8 @@ class FirebaseWrapper{
   checkLogin(user){
     if(user){
       console.log('anp user', user.email, user);
-    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/javascript/splitwise/index.html')) {
-      console.log('anp not logged in');
+    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html')) {
+      console.log('anp not logged in', location.pathname);
       location.href = 'index.html'
     }
   }
