@@ -10,9 +10,21 @@ async function loginpage() {
     alert("Please fill all the input fields")
     return;
   }
-  let login = await firebaseWrapper.login(emailId, password)
-  console.log(login);
-  location.href = `addexpense.html`
+
+  try{
+    let login = await firebaseWrapper.login(emailId, password)
+    console.log(login);
+    location.href = `addexpense.html`
+  }catch(err){
+    console.log('anp err', err);
+    if(err.code == "auth/wrong-password"){
+      alert(err.message)
+    } else if(err.code == "auth/user-not-found"){
+      alert(err.message)
+    }else {
+      alert(err.message)
+    }
+  }
 }
 
 async function sendMailForResetPass() {

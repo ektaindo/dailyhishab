@@ -38,7 +38,7 @@ console.log(gender);
   }
 if (isNaN(stdFee)) {
   alert("Entered fee data is not valid")
-  return;     
+  return;
 }
   let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
 

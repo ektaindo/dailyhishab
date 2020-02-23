@@ -21,7 +21,7 @@ async function viewExpensetable(){
     tot.innerHTML = ""
     return;
   }
-  let template = `<table><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Delete</th><th>Edit Row</th></tr>${trs }</table>`
+  let template = `<table border=2><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Delete</th><th>Edit Row</th></tr>${trs }</table>`
   viewExtable.innerHTML = template
   let tot = document.getElementById("total")
   tot.innerHTML = "Total:"+ total
@@ -37,5 +37,4 @@ async function editExpRow(edt){
   console.log(`hello anoop`, edt)
   location.href = 'editexpense.html?uId='+edt
 }
-
 viewExpensetable()

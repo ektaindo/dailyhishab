@@ -5,6 +5,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Students Record</title>
+    <style media="screen">
+    .center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid #007BFF;
+    padding: 10px;
+    }
+    </style>
   </head>
   <body>
 
@@ -34,14 +42,23 @@
           <a class="dropdown-item" href="studentTableview.html">View Student Table</a>
         </div>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="addgroup.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Group Record
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="addgroup.html">Group Record Entry</a>
+          <a class="dropdown-item" href="viewgroup.html">View Group Table</a>
+        </div>
+      </li>
     </ul>
-      <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout">Logout</button>
+      <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout" onclick="logout()">Logout</button>
   </div>
   </nav>
 
-    <div class="container">
-    <h1> Student Record</h1><br><br>
-  <div>
+  <div class="card center">
+    <div class="card-body">
+      <h3 class="card-title">Student Record</h3>
     <label>Student Name:<input id = "Stddemo1" type="text" name="StdName" value="" placeholder="Enter Name"></label><br>
     <label>Student DOB:<input id="stddemo5" type="date" name = "StdDOB" value="" placeholder="Date Of Birth"></label><br>
     <label>Student Gender:</label><input id="stdgen" type="radio" name="gender" value="Male" autocomplete="off"><label for="male" class="btn btn-secondary">Male</label>
@@ -57,11 +74,12 @@
         <option value="M.Com">M.Com</option>
           <option value="BDS">BDS</option>
             <option value="B.tech">B.Tech</option>
-    </select></label><br><br></div>
+    </select></label><br><br>
     <div class="container">
-    <button type="button" name="" onclick="pickStdInputValue()" class="btn btn-success btn-sm">Add Student Record</button><br><div>
+    <button type="button" name="" onclick="pickStdInputValue()" class="btn btn-success btn-sm">Add Student Record</button><br>
     <button type="button" name="" class="btn btn-primary btn-sm" onclick="resetSTDRecord()">Reset Student Record</button><br><br>
   </div>
+</div>
 </div>
     <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase.js"></script>
     <script type="text/javascript" src="db.js"> </script>

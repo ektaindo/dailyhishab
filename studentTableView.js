@@ -21,7 +21,7 @@ async function viewStudentRecordTable(){
     stdtotalfee.innerHTML = ""
     return;
   }
-  let studentTemplate = "<table><tr><th>Sr.No</th><th>Student Name</th><th>Gender</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th><th>Delete</th><th>Edit</th></tr>" + stdtrs + "</table>"
+  let studentTemplate = "<table border=2><tr><th>Sr.No</th><th>Student Name</th><th>Gender</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th><th>Delete</th><th>Edit</th></tr>" + stdtrs + "</table>"
   viewStdtable.innerHTML = studentTemplate
   let stdtotalfee = document.getElementById("totalFee")
   stdtotalfee.innerHTML = "Total:" + stdt;

@@ -69,5 +69,4 @@ async function pickInputValue(){
   // alert data updated
   // redirect to view page
 }
-
 getRow(uId)

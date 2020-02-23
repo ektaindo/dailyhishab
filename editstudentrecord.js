@@ -80,5 +80,4 @@ if (isNaN(stdFee)) {
     alert("Student data Updated successfully")
     location.href = `studentTableview.html`
 }
-
 getRow(uId)

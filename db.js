@@ -14,6 +14,7 @@ class FirebaseWrapper{
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.firestore();
     this.auth = firebase.auth();
+    this.auth.onAuthStateChanged(this.checkLogin)
   }
 
   async insert(collectionName, row){
@@ -48,7 +49,21 @@ class FirebaseWrapper{
   }
 
   async login(email, password){
+    console.log(this.name);
     return await this.auth.signInWithEmailAndPassword(email, password)
+  }
+
+  async logout(){
+    return await this.auth.signOut()
+  }
+
+  checkLogin(user){
+    if(user){
+      console.log('anp user', user.email, user);
+    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/javascript/splitwise/index.html')) {
+      console.log('anp not logged in');
+      location.href = 'index.html'
+    }
   }
 
   async signup(email, password){
@@ -69,3 +84,7 @@ class FirebaseWrapper{
 }
 
 const firebaseWrapper = new FirebaseWrapper()
+
+async function logout(){
+  await firebaseWrapper.logout()
+}
