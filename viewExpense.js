@@ -12,7 +12,7 @@ async function viewExpensetable(){
     if (expenseview[i].amount > 0) {
       totalAmount = expenseview[i].amount
     }
-    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
+    trs += "<tr><td>"+srNo+"</td><td>"+tableview.group+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
     total += totalAmount
   }
   if (expenseview.length == 0) {
@@ -21,7 +21,7 @@ async function viewExpensetable(){
     tot.innerHTML = ""
     return;
   }
-  let template = `<table border=2><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Delete</th><th>Edit Row</th></tr>${trs }</table>`
+  let template = `<table border=2><tr><th>S.No</th><th>Group</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Delete</th><th>Edit Row</th></tr>${trs }</table>`
   viewExtable.innerHTML = template
   let tot = document.getElementById("total")
   tot.innerHTML = "Total:"+ total

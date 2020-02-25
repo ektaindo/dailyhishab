@@ -41,6 +41,15 @@
             <a class="dropdown-item" href="studentTableview.html">View Student Table</a>
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="addgroup.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Group Record
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="addgroup.html">Add Group</a>
+            <a class="dropdown-item" href="viewgroup.html">View Group Table</a>
+          </div>
+        </li>
       </ul>
       <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout" onclick="logout()">Logout</button>
     </div>
@@ -49,11 +58,12 @@
   <div class="card center" style="width: 20rem;">
     <div class="card-body">
       <h3 class="card-title">Add Expense</h3>
+      <label>Select Group Name:</label><div id = "grpnm"></div></br>
       <label>Expense Name:</label><input id = "demo1" type="text" name="Name" value="" placeholder="Name"> </br>
       <label>Amount:</label><input id = "demo2" type="text" name="Amount" value="" placeholder="Amount"></br>
       <label>Date:</label><input id="demo3" type="date" value="" placeholder="Date"></br>
       <label>Categories:</label><select id = "drpbtn" type="dropdown" name="Category" value="">
-        <option value = "">Select Categories</option>
+        <option value = "">--Select Categories--</option>
         <option value = "Grocery">Groceries</option>
         <option value="Clothing">Clothing</option>
         <option value="Dining Out">Dining Out</option>
@@ -61,7 +71,7 @@
         <option value="Travel">Travel</option>
       </select></br>
       <label>Paid By:</label><select id="paidBy" type="dropdown" name="Paidby" >
-        <option value="">Select Paid By</option>
+        <option value="">--Select Paid By--</option>
         <option value="PaidByYou"> Paid By You</option>
         <option value="PaidByOther"> Paid By Other</option>
       </select>

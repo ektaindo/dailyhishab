@@ -1,7 +1,9 @@
 // write a function for on click function
 // log all values available in the input text boxes and date picker
   async function pickInputValue(){
-
+    let groupDropdwn = document.getElementById("grpdrpdwn")
+    let group = groupDropdwn.value
+    console.log("grpName:", group);
     let elem = document.getElementById('demo1')
     let name = elem.value
     console.log('name:', name);
@@ -19,7 +21,7 @@
     console.log('Paid By:', payment);
     console.log(name.length, amount.length, date.length);
 
-    if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "") {
+    if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="") {
       alert("Please fill all details")
       return;
     }
@@ -41,7 +43,26 @@
     }
 }
 
+async function grpDropdown() {
+      let groups = await firebaseWrapper.getAll('groupmember')
+      let groupDropdwn = document.getElementById("grpnm")
+      let grp = ""
+      for (let i = 0; i < groups.length; i++) {
+        let group = groups[i]
+        grp +="<option>"+group.groupname+"</option>"
+    }
+      if (groups.length == 0) {
+        document.getElementById('grpnm').innerHTML= "<h2>Data Not Found</h2>"
+        return;
+      }
+        let grpTemp = `<select id = "grpdrpdwn"><option>--Select Groups--</option>${grp }</select>`
+        groupDropdwn.innerHTML = grpTemp
+}
+grpDropdown()
+
 function resetData(){
+  let grpElem = document.getElementById('grpdrpdwn')
+  grpElem.value = ""
   let elem = document.getElementById('demo1')
   elem.value = ""
   console.log(elem.value);
