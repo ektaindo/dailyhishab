@@ -1,5 +1,17 @@
 async function viewExpensetable(){
+  let groups = await firebaseWrapper.getAll(`groupmember`)
   let expenseview = await firebaseWrapper.getAll('transections')
+  // merge
+  for(let i = 0; i< expenseview.length; i++){
+    let exp = expenseview[i] // {amount:455, categories:'dfgdf'}
+    let groupId = exp.group
+      for(let group of groups){
+        if(group.uId == groupId){
+          exp.groupName = group.groupname
+        }
+      }
+  }
+
   console.log(expenseview);
   let viewExtable = document.getElementById('expensetable')
   let trs = ""
@@ -12,7 +24,7 @@ async function viewExpensetable(){
     if (expenseview[i].amount > 0) {
       totalAmount = expenseview[i].amount
     }
-    trs += "<tr><td>"+srNo+"</td><td>"+tableview.group+"</td><td>"+ tableview.name +"</td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
+    trs += "<tr><td>"+srNo+"</td><td>"+tableview.groupName+`</td><td> <a href="editexpense.html?uId=${tableview.uId}">`+ tableview.name +"</a></td><td>"+ tableview.amount+"</td><td>"+tableview.date+"</td><td>"+tableview.categories+"</td><td>"+tableview.payment+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editExpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
     total += totalAmount
   }
   if (expenseview.length == 0) {

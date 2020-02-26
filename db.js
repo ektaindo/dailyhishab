@@ -47,6 +47,18 @@ class FirebaseWrapper{
     let data = doc.data()
     return data
   }
+  async getRowsWhere(collectionName, whereKey, whereKeyValue){
+    let snapshots =  await this.db.collection(collectionName)
+    .where(whereKey, '==', whereKeyValue)
+    .get()
+
+    let rows = []
+    snapshots.forEach((doc) => {
+      let row = doc.data();
+      rows.push(row)
+    })
+    return rows
+  }
 
   async login(email, password){
     console.log(this.name);

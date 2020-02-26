@@ -30,7 +30,7 @@
     if (isNaN(num)) {
        alert("input amount data not valid")
     }else {
-      let row =  {name, amount, date, categories, payment}
+      let row =  {name, amount, date, categories, payment, group}
       let getdata = await firebaseWrapper.getAll('transections')
       console.log(typeof(getdata));
       console.log("ExpenseData:", getdata);
@@ -49,13 +49,13 @@ async function grpDropdown() {
       let grp = ""
       for (let i = 0; i < groups.length; i++) {
         let group = groups[i]
-        grp +="<option>"+group.groupname+"</option>"
-    }
+        grp += `<option value="${group.uId}">${group.groupname}</option>`
+    }   
       if (groups.length == 0) {
         document.getElementById('grpnm').innerHTML= "<h2>Data Not Found</h2>"
         return;
       }
-        let grpTemp = `<select id = "grpdrpdwn"><option>--Select Groups--</option>${grp }</select>`
+        let grpTemp = `<select id = "grpdrpdwn" ><option value="">--Select Groups--</option>${grp }</select>`
         groupDropdwn.innerHTML = grpTemp
 }
 grpDropdown()

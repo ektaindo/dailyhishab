@@ -15,7 +15,9 @@ async function getRow(rowId){
   let row = await firebaseWrapper.getRow('transections', rowId)
   console.log(row);
   console.log(typeof row);
-
+  let grpElem = document.getElementById('grpdrpdwn')
+  console.log("going to read the element");
+  grpElem.value = row.group
   let nameElem = document.getElementById('demo1')
   nameElem.value = row.name
   let amountElem = document.getElementById(`demo2`)
@@ -28,8 +30,24 @@ async function getRow(rowId){
   paidbyElem.value = row.payment
   //TODO pre fil the row value to each and every element in edit page
 }
+
+async function editgroupdrpdwn(){
+    let groups = await firebaseWrapper.getAll('groupmember')
+    let grpElem = document.getElementById("grpnm")
+    let grpDropDown = ""
+    for(let group of groups){
+      grpDropDown += `<option value="${group.uId}">${group.groupname}</option>`
+    }
+    let grpTemp = `<select id = "grpdrpdwn" ><option value="">--Select Groups--</option>${grpDropDown }</select>`
+    console.log("going to make group dropdown");
+    grpElem.innerHTML = grpTemp
+}
+
 async function pickInputValue(){
   console.log(uId);
+  let grpElem = document.getElementById('grpdrpdwn')
+  let group = grpElem.value
+  console.log("group:", group);
   let nmElem = document.getElementById('demo1')
   let name = nmElem.value
   console.log('name:', name);
@@ -46,7 +64,7 @@ async function pickInputValue(){
   let payment = pdElem.value
   console.log('Paid By:', payment);
 
-  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "") {
+  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="") {
     alert("Please fill all details")
     return;
   }
@@ -55,7 +73,7 @@ async function pickInputValue(){
      alert("input amount data not valid")
      return;
   }
-    let row =  {name, amount, date, categories, payment}
+      let row =  {name, amount, date, categories, payment, group}
     let update = await firebaseWrapper.update('transections', uId, row)
     alert("Expense data updated successfully")
     location.href = `viewExpense.html`
@@ -69,4 +87,9 @@ async function pickInputValue(){
   // alert data updated
   // redirect to view page
 }
-getRow(uId)
+async function initiallization() {
+  await editgroupdrpdwn()
+  getRow(uId)
+
+}
+initiallization()

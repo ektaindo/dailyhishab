@@ -12,7 +12,7 @@ async function viewGrouptable(){
       emails += (j+1) + '. ' + tableview.members[j] + ' '
     }
 
-    trs += "<tr><td>"+srNo+"</td><td>"+ tableview.groupname +"</td><td>"+ tableview.grouptype+"</td><td>"+emails+`</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteGrpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editGrpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
+    trs += "<tr><td>"+srNo+`</td><td> <a href="groupDetail.html?uId=${tableview.uId}">`+tableview.groupname+"</a></td><td>"+ tableview.grouptype+"</td><td>"+emails+`</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteGrpRow("${tableview.uId}")'>Delete</button><br></td><td><button type='button' class="btn btn-primary" name='' onclick='editGrpRow("${tableview.uId}")'>Edit Row</button><br></td></tr>`
   }
   if (groupview.length == 0) {
     document.getElementById('grouptable').innerHTML= "<h2>Data Not Found</h2>"
