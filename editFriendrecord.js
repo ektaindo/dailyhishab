@@ -1,4 +1,4 @@
-function getUIdFromstudentUrl() {
+function getUIdFromfriendUrl() {
   let url_string = location.href
   console.log('url string:', url_string);
   let url = new URL(url_string);
@@ -8,76 +8,46 @@ function getUIdFromstudentUrl() {
   console.log(uId);
   return uId
 }
-let uId = getUIdFromstudentUrl()
+let uId = getUIdFromfriendUrl()
 
 async function getRow(rowId) {
-  let stRow = await firebaseWrapper.getRow('studentRecord', rowId)
-  console.log(stRow);
-  console.log(typeof stRow);
+  let frndRow = await firebaseWrapper.getRow('friendRecord', rowId)
+  console.log(frndRow);
+  console.log(typeof frndRow);
 
-  let nameElem = document.getElementById('Stddemo1')
-  nameElem.value = stRow.stdName
-  let dobElem = document.getElementById(`stddemo5`)
-  dobElem.value = stRow.stdDob
-  let genderMElem = document.getElementById(`stdgen`)
-  genderMElem.checked = stRow.gender
-  let genFElem = document.getElementById(`stdfgen`)
-  genFElem.checked = stRow.gender
-  let faterNElem = document.getElementById(`Stddemo2`)
-  faterNElem.value = stRow.stdFName
-  let mNameElem = document.getElementById(`Stddemo3`)
-  mNameElem.value = stRow.stdMName
-  let feeElem = document.getElementById(`Stddemo4`)
-  feeElem.value = stRow.stdFee
-  let courseElem = document.getElementById(`stddrpbtn`)
-  courseElem.value = stRow.stdCourse
+  let nameElem = document.getElementById('frndNm')
+  nameElem.value = frndRow.frndName
+  let emailElem = document.getElementById(`email`)
+  emailElem.value = frndRow.frndEmail
+  let mobnoMElem = document.getElementById(`mobno`)
+  mobnoMElem.value = frndRow.frndMobNo
+
 }
 
-async function pickStdInputValue(){
-  let stdElem = document.getElementById("Stddemo1")
-  let stdName = stdElem.value
-  console.log('StudentName',stdName);
-  let stdGenElem = document.getElementById("stdgen")
-  let stdGen = stdGenElem.checked
-  console.log("Student Gender",stdGen);
-  let stdGendElem = document.getElementById("stdfgen")
-  let stdGender = stdGendElem.checked
-  console.log("Student Gender",stdGender);
-  let stdFElem = document.getElementById("Stddemo2")
-  let stdFName = stdFElem.value
-  console.log("StudentFather'sName",stdFName);
-  let stdMElem = document.getElementById("Stddemo3")
-  let stdMName = stdMElem.value
-  console.log("StudentMother'sName",stdMName);
-  let stdFeeElem = document.getElementById("Stddemo4")
-  let stdFee = parseInt(stdFeeElem.value)
-  console.log("StudentFee",stdFee);
-  let stdDobElem = document.getElementById("stddemo5")
-  let stdDob = stdDobElem.value
-  console.log("StudentDOB",stdDob);
-  let stdCourseElem = document.getElementById("stddrpbtn")
-  let stdCourse = stdCourseElem.value
-  console.log("StudentCourse",stdCourse);
+async function pickfrndInputValue(){
+  let frndNElem = document.getElementById("frndNm")
+  let frndName = frndNElem.value
+  console.log('friend Name',frndName);
+  let frndemailElem = document.getElementById("email")
+  let frndEmail = frndemailElem.value
+  console.log("friend email",frndEmail);
 
-let gender = ''
-if (stdGen == true) {
-      gender = 'Male'
-}else if(stdGender == true){
-  gender = 'Female'
-}
+  let frndmobElem = document.getElementById("mobno")
+  let frndMobNo = frndmobElem.value
+  console.log("friend mob no",frndMobNo);
 
-console.log(gender);
-  if (stdName == "" || stdFName == "" || stdMName == "" || stdFee == "0" || stdDob == "" || stdCourse=="" || gender == '' ) {
-    alert("Please fill all details")
-    return;
-  }
-if (isNaN(stdFee)) {
-  alert("Entered fee data is not valid")
-  return;
-}
-  let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
-  let update = await firebaseWrapper.update('studentRecord', uId, studentRecordrow)
-    alert("Student data Updated successfully")
+  let mobileInValid = false
+  if (frndMobNo.length > 10 || parseInt(frndMobNo) < 6000000000 || frndMobNo == "") {
+   mobileInValid = true
+ }
+ if (frndName == "" || frndEmail == "" || mobileInValid) {
+   alert("Please fill valid details")
+   return;
+ }
+
+  let friendRecordrow =  {frndName, frndEmail, frndMobNo}
+  let update = await firebaseWrapper.update('friendRecord', uId, friendRecordrow)
+    alert("Friend data Updated successfully")
     location.href = `friendTableview.html`
 }
 getRow(uId)

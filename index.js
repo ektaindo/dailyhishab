@@ -46,3 +46,16 @@ async function sendMailForResetPass() {
 //   let passElem= document.getElementById("password")
 //   passElem.value=""
 //   console.log(passElem.value);
+
+
+
+
+
+let name = "anoop"
+let lastname = `rai`
+
+let fullname = name+ lastname
+let fullname = "anoop rai"
+let fullname = `anoop rai`
+let fullname = `anoop ${lastname}`
+let fullname = "anoop" + lastname

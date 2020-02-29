@@ -1,73 +1,43 @@
-async function pickStdInputValue(){
-  let stdElem = document.getElementById("Stddemo1")
-  let stdName = stdElem.value
-  console.log('StudentName',stdName);
-  let stdGenElem = document.getElementById("stdgen")
-  let stdGen = stdGenElem.checked
-  console.log("Student Gender",stdGen);
-  let stdGendElem = document.getElementById("stdfgen")
-  let stdGender = stdGendElem.checked
-  console.log("Student Gender",stdGender);
-  let stdFElem = document.getElementById("Stddemo2")
-  let stdFName = stdFElem.value
-  console.log("StudentFather'sName",stdFName);
-  let stdMElem = document.getElementById("Stddemo3")
-  let stdMName = stdMElem.value
-  console.log("StudentMother'sName",stdMName);
-  let stdFeeElem = document.getElementById("Stddemo4")
-  let stdFee = parseInt(stdFeeElem.value)
-  console.log("StudentFee",stdFee);
-  let stdDobElem = document.getElementById("stddemo5")
-  let stdDob = stdDobElem.value
-  console.log("StudentDOB",stdDob);
-  let stdCourseElem = document.getElementById("stddrpbtn")
-  let stdCourse = stdCourseElem.value
-  console.log("StudentCourse",stdCourse);
+async function pickFriendInputValue(){
+  let frndElem = document.getElementById("frndnm")
+  let frndName = frndElem.value
+  console.log('FriendName',frndName);
 
-let gender = ''
-if (stdGen == true) {
-      gender = 'Male'
-}else if(stdGender == true){
-  gender = 'Female'
+  let frndEmailElem = document.getElementById("frndemail")
+  let frndEmail = frndEmailElem.value
+  console.log("Friend email", frndEmail);
+
+  let frndMobElem = document.getElementById("frndMobno")
+  let frndMobNo = frndMobElem.value
+  console.log("Friend's Mobile no", frndMobNo);
+
+  let mobileInValid = false
+  if (frndMobNo.length > 10 || parseInt(frndMobNo) < 6000000000 || frndMobNo == "") {
+   mobileInValid = true
+    // alert("Enter valid mobile number")
+    // return;
 }
 
-console.log(gender);
-  if (stdName == "" || stdFName == "" || stdMName == "" || stdFee == "0" || stdDob == "" || stdCourse=="" || gender == '' ) {
-    alert("Please fill all details")
+  if (frndName == "" || frndEmail == "" || mobileInValid) {
+    alert("Please fill valid details")
     return;
   }
-if (isNaN(stdFee)) {
-  alert("Entered fee data is not valid")
-  return;
-}
-  let studentRecordrow =  {stdName, stdFName,stdMName, stdFee, stdDob, stdCourse, gender }
+  let friendRecordrow =  {frndName, frndEmail, frndMobNo}
 
-  let insert = await firebaseWrapper.insert('studentRecord', studentRecordrow)
-    alert("Student data submitted successfully")
-    resetSTDRecord()
+  let insert = await firebaseWrapper.insert('friendRecord', friendRecordrow)
+    alert("Friend data submitted successfully")
+    resetFrndRecord()
 }
- function resetSTDRecord(){
-   let stdElem = document.getElementById('Stddemo1')
-   stdElem.value = ""
-   console.log(stdElem.value);
-   let stdFElem= document.getElementById("Stddemo2")
-   stdFElem.value=""
-   console.log(stdFElem.value);
-   let stdMelem3= document.getElementById("Stddemo3")
-   stdMelem3.value=""
-   console.log(stdMelem3.value);
-   let elem4= document.getElementById("Stddemo4")
-   elem4.value=""
-   console.log(elem4.value);
-   let elem5= document.getElementById("stddemo5")
-   elem5.value=""
-   console.log(elem5.value);
-   let elem6= document.getElementById("stddrpbtn")
-   elem6.value=""
-   console.log(elem6.value);
+ function resetFrndRecord(){
+   let frndElem = document.getElementById('frndnm')
+   frndElem.value = ""
+   console.log(frndElem.value);
 
-   let stdGenElem = document.getElementById("stdgen")
-    stdGenElem.checked = false
-   let stdGendElem = document.getElementById("stdfgen")
-   stdGendElem.checked = false
+   let fEmailElem= document.getElementById("frndemail")
+   fEmailElem.value=""
+   console.log(fEmailElem.value);
+
+   let frndMobelem3= document.getElementById("frndMobno")
+   frndMobelem3.value=""
+   console.log(frndMobelem3.value);
  }

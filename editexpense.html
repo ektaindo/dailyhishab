@@ -14,14 +14,13 @@
     </style>
   </head>
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="index.html">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="dashboard.html">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
-  </button>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="addexpense.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,31 +28,39 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="addexpense.html">Add Expense</a>
-          <a class="dropdown-item" href="viewExpense.html">View Expense Table</a>
+          <a class="dropdown-item" href="viewExpense.html">View Expenses</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="frienddata.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Friend Record
+          Friends
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="frienddata.html">Friend Record Entry</a>
-          <a class="dropdown-item" href="friendTableview.html">View Friend Table</a>
+          <a class="dropdown-item" href="frienddata.html">Add Friends</a>
+          <a class="dropdown-item" href="friendTableview.html">View Friends</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="addgroup.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Group Record
+          Groups
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="addgroup.html">Add Group</a>
-          <a class="dropdown-item" href="viewgroup.html">View Group Table</a>
+          <a class="dropdown-item" href="viewgroup.html">View Groups</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="setting.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="setting.html">Setting</a>
+          <button id="logout" class="btn btn-link btn-logout" type="Logout" onclick="logout()">Logout</button>
         </div>
       </li>
     </ul>
-      <button id="logout" class="btn btn-success my-2 my-sm-0" type="Logout" onclick="logout()">Logout</button>
-  </div>
-  </nav>
+    </div>
+    </nav>
 
   <div class="card center" style="width: 20rem;">
     <div class="card-body">
