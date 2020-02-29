@@ -14,7 +14,7 @@ async function loginpage() {
   try{
     let login = await firebaseWrapper.login(emailId, password)
     console.log(login);
-    location.href = `addexpense.html`
+    location.href = `dashboard.html`
   }catch(err){
     console.log('anp err', err);
     if(err.code == "auth/wrong-password"){

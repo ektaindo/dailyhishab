@@ -98,5 +98,6 @@ class FirebaseWrapper{
 const firebaseWrapper = new FirebaseWrapper()
 
 async function logout(){
+  console.log('anp logout');
   await firebaseWrapper.logout()
 }

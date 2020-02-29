@@ -13,7 +13,7 @@ async function viewStudentRecordTable(){
       fee = stdData.stdFee
     }
     stdt = stdt + fee;
-    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><td><button class="btn btn-primary" type='button' name='' onclick='editStdntRow("${stdData.uId}")'>Edit Row</button></td><br></tr>`
+    stdtrs += "<tr><td>"+srNumb+"</td><td>"+ stdData.stdName +"</td><td>"+stdData.gender+"</td><td>"+ stdData.stdFName+"</td><td>"+stdData.stdMName+"</td><td>"+stdData.stdFee+"</td><td>"+stdData.stdDob+"</td><td>"+stdData.stdCourse+ `</td><td><a href="editstudentrecord.html?uId=${stdData.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${stdData.uId}")'>Delete</button><br></td><br></tr>`
   }
   if (dbStdRows.length == 0) {
     document.getElementById('Studenttable').innerHTML = "<h2>Data Not Found</h2>"
@@ -21,7 +21,7 @@ async function viewStudentRecordTable(){
     stdtotalfee.innerHTML = ""
     return;
   }
-  let studentTemplate = "<table border=2><tr><th>Sr.No</th><th>Student Name</th><th>Gender</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th><th>Delete</th><th>Edit</th></tr>" + stdtrs + "</table>"
+  let studentTemplate = "<table border=2><tr><th>Sr.No</th><th>Student Name</th><th>Gender</th><th>Student Father's Name</th><th>Student Mother's Name</th><th>Student Fee</th><th>Student DOB</th><th>Student Course</th><th>Edit Row</th><th>Delete</th></tr>" + stdtrs + "</table>"
   viewStdtable.innerHTML = studentTemplate
   let stdtotalfee = document.getElementById("totalFee")
   stdtotalfee.innerHTML = "Total:" + stdt;
@@ -35,8 +35,4 @@ async function deleteRow(del){
   viewStudentRecordTable()
 }
 
-async function editStdntRow(edt){
-  console.log(`hello`, edt)
-  location.href = 'editstudentrecord.html?uId='+edt
-}
 viewStudentRecordTable()
