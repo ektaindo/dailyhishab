@@ -14,7 +14,7 @@ async function loginpage() {
   try{
     let login = await firebaseWrapper.login(emailId, password)
     console.log(login);
-    location.href = `dashboard.html`
+    location.href = `dashboard/dashboard.html`
   }catch(err){
     console.log('anp err', err);
     if(err.code == "auth/wrong-password"){
@@ -46,16 +46,3 @@ async function sendMailForResetPass() {
 //   let passElem= document.getElementById("password")
 //   passElem.value=""
 //   console.log(passElem.value);
-
-
-
-
-
-let name = "anoop"
-let lastname = `rai`
-
-let fullname = name+ lastname
-let fullname = "anoop rai"
-let fullname = `anoop rai`
-let fullname = `anoop ${lastname}`
-let fullname = "anoop" + lastname

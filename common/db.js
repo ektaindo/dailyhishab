@@ -72,7 +72,7 @@ class FirebaseWrapper{
   checkLogin(user){
     if(user){
       console.log('anp user', user.email, user);
-    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html')) {
+    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html' || location.pathname === `signUpPage.html` || location.pathname ===`/C:/Users/ektai/Documents/dailyhishab/signUpPage.html`)) {
       console.log('anp not logged in', location.pathname);
       location.href = 'index.html'
     }

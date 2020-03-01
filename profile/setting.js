@@ -1,5 +1,9 @@
 function settingpage(){
+
+  let user = firebaseWrapper.getCurrentUser()
+  console.log(user);
   let setdata ={name: "ekta", email:"ekta.indo@gmail.com", password:"ekta123", mobileNo:8765676769, currency:"Dollar", language:"English", timezone:"5.5"}
+
   let nameElem = document.getElementById("name")
   nameElem.value = setdata.name
 

@@ -2,12 +2,12 @@ async function signUp() {
   let fullnameElem= document.getElementById("fullname")
   let fullName = fullnameElem.value
   console.log("fullName:", fullName);
-  let dobElem= document.getElementById("dob")
-  let dob = dobElem.value
-  console.log("dob:", dob);
   let emailElem= document.getElementById("emailid")
   let emailId = emailElem.value
   console.log("Email Id:",emailId);
+  let mobNoElem= document.getElementById("mobno")
+  let mobileNo = mobNoElem.value
+  console.log("Mobile no:",mobileNo);
   let passElem = document.getElementById("pass1")
   let passw = passElem.value
   console.log(`Password:`,passw);
@@ -15,8 +15,13 @@ async function signUp() {
   let confirmPassword= confElem.value
   console.log(`Confirm Password:`,confirmPassword);
 
-  if (fullName =="" || dob=="" || emailId == "" || passw == "" || confirmPassword == "") {
-    alert("Please fill all the input fields")
+  let mobileInValid = false
+  if (mobileNo.length > 10 || parseInt(mobileNo) < 6000000000 || mobileNo    == "") {
+   mobileInValid = true
+}
+
+  if (fullName =="" || emailId == "" || passw == "" || confirmPassword == "" || mobileInValid) {
+    alert("Please fill valid inputs")
     return;
   }
   if (passw !== confirmPassword) {
@@ -32,8 +37,8 @@ async function signUp() {
 function resetdata() {
   let fullnameElem= document.getElementById("fullname")
   fullnameElem.value= ""
-  let dobElem= document.getElementById("dob")
-  dobElem.value=""
+  let mobNoElem= document.getElementById("mobno")
+  mobNoElem.value=""
   let emailElem= document.getElementById("emailid")
   emailElem.value=""
   let passElem = document.getElementById("pass1")
