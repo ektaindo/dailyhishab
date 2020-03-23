@@ -15,9 +15,9 @@ let groupuId = getUIdFromUrl()
 console.log("groupuId" , groupuId);
 async function showGroupDetails() {
   console.log('groupuId in fn', groupuId);
-  let row = await firebaseWrapper.getRow('groupmember', groupuId)
+  let row = await firebaseWrapper.getRow('groupRecord', groupuId)
   console.log(row);
-  let group = "<h5>Group Name: </h5>"+row.groupname+"<br><h5>Group Type: </h5>"+row.grouptype+"<br><h5>Group Members: </h5>"+row.members
+    let group = "<h5>Group Name: </h5>"+row.groupname+"<br><h5>Group Type: </h5>"+row.grouptype+"<br>"
   document.getElementById("grpDetail").innerHTML = group
 }
 
@@ -37,7 +37,7 @@ async function showGroupExpenses() {
        if (expRows[i].amount > 0) {
          totalAmount = expRows[i].amount
        }
-       trs += "<tr><td>"+srNo+`</td><td> <a href="editexpense.html?uId=${expense.uId}">`+ expense.name +"</a></td><td>"+ expense.amount+"</td><td>"+expense.date+"</td><td>"+expense.categories+"</td><td>"+expense.payment+ `</td><td><a href="editexpense.html?uId=${expense.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${expense.uId}")'>Delete</button><br></td></tr>`
+       trs += "<tr><td>"+srNo+`</td><td> <a href="../expense/editexpense.html?uId=${expense.uId}">`+ expense.name +"</a></td><td>"+ expense.amount+"</td><td>"+expense.date+"</td><td>"+expense.categories+"</td><td>"+expense.payment+ `</td><td><a href="editexpense.html?uId=${expense.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${expense.uId}")'>Delete</button><br></td></tr>`
        total += totalAmount
    }
    let template = `<br><table border=2><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Edit Row</th><th>Delete</th></tr>${trs }</table>`

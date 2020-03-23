@@ -18,6 +18,8 @@ async function getRow(rowId){
   let grpElem = document.getElementById('grpdrpdwn')
   console.log("going to read the element");
   grpElem.value = row.group
+  let frndElem = document.getElementById('frnddrpdwn')
+  frndElem.value = row.group
   let nameElem = document.getElementById('demo1')
   nameElem.value = row.name
   let amountElem = document.getElementById(`demo2`)
@@ -32,7 +34,7 @@ async function getRow(rowId){
 }
 
 async function editgroupdrpdwn(){
-    let groups = await firebaseWrapper.getAll('groupmember')
+    let groups = await firebaseWrapper.getAll('groupRecord')
     let grpElem = document.getElementById("grpnm")
     let grpDropDown = ""
     for(let group of groups){
@@ -42,12 +44,26 @@ async function editgroupdrpdwn(){
     console.log("going to make group dropdown");
     grpElem.innerHTML = grpTemp
 }
+async function editfrnddrpdwn(){
+    let frnds = await firebaseWrapper.getAll('groupRecord')
+    let frndElem = document.getElementById("frnd")
+    let frndDropDown = ""
+    for(let frnd of frnds){
+      frndDropDown += `<option value="${frnd.uId}">${frnd.frndName}</option>`
+    }
+    let frndTemp = `<select id = "frnddrpdwn" ><option value="">--Select friends--</option>${frndDropDown }</select>`
+    console.log("going to make friends dropdown");
+    frndElem.innerHTML = frndTemp
+}
 
 async function pickInputValue(){
   console.log(uId);
   let grpElem = document.getElementById('grpdrpdwn')
   let group = grpElem.value
   console.log("group:", group);
+  let frndElem = document.getElementById('frnddrpdwn')
+  let frnd = frndElem.value
+  console.log("Friend:", frnd);
   let nmElem = document.getElementById('demo1')
   let name = nmElem.value
   console.log('name:', name);
@@ -64,7 +80,7 @@ async function pickInputValue(){
   let payment = pdElem.value
   console.log('Paid By:', payment);
 
-  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="") {
+  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="" || frnd=="") {
     alert("Please fill all details")
     return;
   }
@@ -73,7 +89,7 @@ async function pickInputValue(){
      alert("input amount data not valid")
      return;
   }
-      let row =  {name, amount, date, categories, payment, group}
+      let row =  {name, amount, date, categories, payment, group, frnd}
     let update = await firebaseWrapper.update('transections', uId, row)
     alert("Expense data updated successfully")
     location.href = `viewExpense.html`
@@ -92,4 +108,10 @@ async function initiallization() {
   getRow(uId)
 
 }
+async function initiallizationfrnd() {
+  await editfrnddrpdwn()
+  getRow(uId)
+
+}
 initiallization()
+initiallizationfrnd()

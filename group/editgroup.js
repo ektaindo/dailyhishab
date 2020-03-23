@@ -12,7 +12,7 @@ function getUIdFromUrl(){
 let uId = getUIdFromUrl()
 
 async function getRow(rowId){
-  let row = await firebaseWrapper.getRow('groupmember', rowId)
+  let row = await firebaseWrapper.getRow('groupRecord', rowId)
   console.log(row);
   console.log(typeof row);
 
@@ -21,9 +21,6 @@ async function getRow(rowId){
 
   let grptypeElem= document.getElementById("grptype")
   grptypeElem.value = row.grouptype
-
-  let grpMemElem= document.getElementById("emailgrmem")
-  grpMemElem.value= row.members
 
 }
 async function pickInputValue(){
@@ -36,18 +33,12 @@ async function pickInputValue(){
   let grouptype = grptypeElem.value
   console.log('Type Of Group:', grouptype);
 
-  let grpMemElem = document.getElementById("emailgrmem")
-  let member = grpMemElem.value
-  let members = member.split(",")
-  console.log('Group Mem. Email:', members);
-
-
-  if (groupname == "" || grouptype == "" || members == "") {
+  if (groupname == "" || grouptype == "") {
     alert("Please fill all details")
     return;
   }
-    let row =  {groupname, grouptype, members}
-    let update = await firebaseWrapper.update('groupmember', uId, row)
+    let row =  {groupname, grouptype}
+    let update = await firebaseWrapper.update('groupRecord', uId, row)
     alert("Group data updated successfully")
     location.href = `viewgroup.html`
 

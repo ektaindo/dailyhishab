@@ -4,6 +4,9 @@
     let groupDropdwn = document.getElementById("grpdrpdwn")
     let group = groupDropdwn.value
     console.log("grpName:", group);
+    let frndDropdwn = document.getElementById("frnddrpdwn")
+    let friend = frndDropdwn.value
+    console.log("frndName:", friend);
     let elem = document.getElementById('demo1')
     let name = elem.value
     console.log('name:', name);
@@ -21,7 +24,7 @@
     console.log('Paid By:', payment);
     console.log(name.length, amount.length, date.length);
 
-    if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="") {
+    if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || (group=="" && friend=="")) {
       alert("Please fill all details")
       return;
     }
@@ -30,8 +33,8 @@
     if (isNaN(num)) {
        alert("input amount data not valid")
     }else {
-      let row =  {name, amount, date, categories, payment, group}
-      let getdata = await firebaseWrapper.getAll('transections')
+      let row =  {name, amount, date, categories, payment, group, friend}
+            let getdata = await firebaseWrapper.getAll('transections')
       console.log(typeof(getdata));
       console.log("ExpenseData:", getdata);
       let insert = await firebaseWrapper.insert('transections', row)
@@ -44,13 +47,13 @@
 }
 
 async function grpDropdown() {
-      let groups = await firebaseWrapper.getAll('groupmember')
+      let groups = await firebaseWrapper.getAll('groupRecord')
       let groupDropdwn = document.getElementById("grpnm")
       let grp = ""
       for (let i = 0; i < groups.length; i++) {
         let group = groups[i]
         grp += `<option value="${group.uId}">${group.groupname}</option>`
-    }   
+    }
       if (groups.length == 0) {
         document.getElementById('grpnm').innerHTML= "<h2>Data Not Found</h2>"
         return;
@@ -58,11 +61,30 @@ async function grpDropdown() {
         let grpTemp = `<select id = "grpdrpdwn" ><option value="">--Select Groups--</option>${grp }</select>`
         groupDropdwn.innerHTML = grpTemp
 }
+
+async function frndDropdown() {
+      let frnds = await firebaseWrapper.getAll('friendRecord')
+      let frndDropdwn = document.getElementById("frnd")
+      let frnd = ""
+      for (let i = 0; i < frnds.length; i++) {
+        let friend = frnds[i]
+        frnd += `<option value="${friend.uId}">${friend.frndName}</option>`
+    }
+      if (frnds.length == 0) {
+        document.getElementById('frnd').innerHTML= "<h2>Data Not Found</h2>"
+        return;
+      }
+        let frndTemp = `<select id = "frnddrpdwn" ><option value="">--Select Groups--</option>${frnd}</select>`
+        frndDropdwn.innerHTML = frndTemp
+}
 grpDropdown()
+frndDropdown()
 
 function resetData(){
   let grpElem = document.getElementById('grpdrpdwn')
   grpElem.value = ""
+  let frndElem = document.getElementById('frnddrpdwn')
+  frndElem.value = ""
   let elem = document.getElementById('demo1')
   elem.value = ""
   console.log(elem.value);
