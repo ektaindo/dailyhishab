@@ -12,14 +12,22 @@ function getUIdFromUrl(){
 let uId = getUIdFromUrl()
 
 async function getRow(rowId){
-  let row = await firebaseWrapper.getRow('transections', rowId)
+    let row = await firebaseWrapper.getRow('transections', rowId)
+    //row = {group:"19lake", friend:"abcd", }
   console.log(row);
   console.log(typeof row);
-  let grpElem = document.getElementById('grpdrpdwn')
-  console.log("going to read the element");
-  grpElem.value = row.group
   let frndElem = document.getElementById('frnddrpdwn')
-  frndElem.value = row.group
+  let grpElem = document.getElementById('grpdrpdwn')
+  if (row.group=="") {
+    frndElem.value = row.friend
+    let grpnmElem = document.getElementById('grpnm')
+    grpnmElem.innerHTML=""
+  }else {
+    console.log("going to read the element");
+    grpElem.value = row.group
+    let frndnmElem = document.getElementById('frndnm')
+    frndnmElem.innerHTML=""
+  }
   let nameElem = document.getElementById('demo1')
   nameElem.value = row.name
   let amountElem = document.getElementById(`demo2`)
@@ -35,7 +43,7 @@ async function getRow(rowId){
 
 async function editgroupdrpdwn(){
     let groups = await firebaseWrapper.getAll('groupRecord')
-    let grpElem = document.getElementById("grpnm")
+    let grpElem = document.getElementById("grp")
     let grpDropDown = ""
     for(let group of groups){
       grpDropDown += `<option value="${group.uId}">${group.groupname}</option>`
@@ -45,7 +53,7 @@ async function editgroupdrpdwn(){
     grpElem.innerHTML = grpTemp
 }
 async function editfrnddrpdwn(){
-    let frnds = await firebaseWrapper.getAll('groupRecord')
+    let frnds = await firebaseWrapper.getAll('friendRecord')
     let frndElem = document.getElementById("frnd")
     let frndDropDown = ""
     for(let frnd of frnds){
@@ -80,7 +88,7 @@ async function pickInputValue(){
   let payment = pdElem.value
   console.log('Paid By:', payment);
 
-  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || group=="" || frnd=="") {
+  if (name == "" || amount == "" || date == "" || categories == "" || amount == "0" || payment == "" || (group=="" && frnd=="")) {
     alert("Please fill all details")
     return;
   }

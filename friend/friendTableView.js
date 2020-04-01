@@ -9,7 +9,7 @@ async function viewFriendRecordTable(){
     srNumb = 1 + i
     console.log(frndData);
 
-    frndtrs += "<tr><td>"+srNumb+"</td><td>"+ frndData.frndName +"</td><td>"+frndData.frndEmail+"</td><td>"+ frndData.frndMobNo+`</td><td><a href="editFriendrecord.html?uId=${frndData.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${frndData.uId}")'>Delete</button><br></td><br></tr>`
+    frndtrs += "<tr><td>"+srNumb+`</td><td><a href="friendDetails.html?uId=${frndData.uId}">`+ frndData.frndName +"</td><td>"+frndData.frndEmail+"</td><td>"+ frndData.frndMobNo+`</td><td><a href="editFriendrecord.html?uId=${frndData.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${frndData.uId}")'>Delete</button><br></td><br></tr>`
   }
   if (dbfrndRows.length == 0) {
     document.getElementById('Friendtable').innerHTML = "<h2>Data Not Found</h2>"
