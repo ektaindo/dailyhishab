@@ -10,15 +10,18 @@ class FirebaseWrapper{
       appId: "1:900223792040:web:a6f6d4ce0ed6ec367ba39d",
       measurementId: "G-XTBS2QPP0W"
     };
-
+    this.userId = ''
     firebase.initializeApp(firebaseConfig);
     this.db = firebase.firestore();
     this.auth = firebase.auth();
-    this.auth.onAuthStateChanged(this.checkLogin)
+    console.log('fgdfhgfhgf');
+    this.auth.onAuthStateChanged(this.checkLogin.bind(this))
   }
 
   async insert(collectionName, row){
     row.uId = this.uuidv4()
+    row.userId = this.userId
+    console.log('rowww', row);
     row.timestamp = new Date().getTime()
     let insert = await  this.db.collection(collectionName).doc(row.uId).set(row)
     return insert
@@ -70,6 +73,8 @@ class FirebaseWrapper{
   }
 
   checkLogin(user){
+    console.log('user', user);
+    this.userId = user.uid
     if(user){
       console.log('anp user', user.email, user);
     } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html' || location.pathname === `signUpPage.html` || location.pathname ===`/C:/Users/ektai/Documents/dailyhishab/signUpPage.html`)) {
