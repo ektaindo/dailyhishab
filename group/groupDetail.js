@@ -85,25 +85,28 @@ function resetData() {
   frndElem.value = ""
 }
 
-// async function showFrnds() {
-//      let frndRows = await firebaseWrapper.getRowsWhere("groupMembers", "groupuId", groupuId)
-//      let frnds = document.getElementById("frndsData")
-//      console.log(frndRows);
-//      let trs = ""
-//      let srNo = 0
-//      for (let i=0; i<frndRows.length; i++) {
-//        let frnd = frndRows[i]
-//        srNo++
-//        trs += "<tr><td>"+srNo+`</td><td><a href="../expense/editexpense.html?uId=${expense.uId}">`+ expense.name +"</a></td><td>"+ expense.amount+"</td><td>"+expense.date+"</td><td>"+expense.categories+"</td><td>"+expense.payment+ `</td><td><a href="editexpense.html?uId=${expense.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${expense.uId}")'>Delete</button><br></td></tr>`
-//        total += totalAmount
-//    }
-//    let template = `<br><table border=2><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Edit Row</th><th>Delete</th></tr>${trs }</table>`
-//    grpExpense.innerHTML = template
-// }
+async function showFrnds() {
+     let frndRows = await firebaseWrapper.getRowsWhere("groupMembers", "groupuId", groupuId)
+     let frnds = document.getElementById("frndsData")
+     console.log(frndRows);
+     let trs = ""
+     let srNo = 0
+     for (let i=0; i<frndRows.length; i++) {
+       let frnd = frndRows[i]
+       srNo++
+       let frndRow = await firebaseWrapper.getRow("friendRecord",frnd.frndId)
+       console.log('frndRow', frndRow);
+       trs += `<tr><td>${srNo}</td><td><a href="../friend/friendDetails.html?uId=${frnd.frndId}">${frndRow.frndName}</a></td><td>${frndRow.frndEmail}</td><td>${frndRow.frndMobNo}</td><td><a href="../friend/editFriendrecord.html?uId=${frnd.frndId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteRow("${frnd.frndId}")'>Delete</button><br></td></tr>`
+       // console.log('traaaaaas', trs)
+   }
+   // console.log('traaaaaas', trs)
+   let template = `<br><table border=2><tr><th>S.No</th><th>Friend Name</th><th>Friend Email</th><th>Mobile No</th><th>Edit Row</th><th>Delete</th></tr>${trs }</table>`
+   frnds.innerHTML = template
+}
 
 
 
 showGroupExpenses()
 showGroupDetails()
 frndDropdown()
-// showFrnds()
+showFrnds()

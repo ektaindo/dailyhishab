@@ -15,7 +15,7 @@ class FirebaseWrapper{
     this.db = firebase.firestore();
     this.auth = firebase.auth();
     console.log('fgdfhgfhgf');
-    this.auth.onAuthStateChanged(this.checkLogin.bind(this))
+    this.onAuthStateChanged()
   }
 
   async insert(collectionName, row){
@@ -28,7 +28,14 @@ class FirebaseWrapper{
   }
 
   async getAll(collectionName){
-    let  snapshots = await this.db.collection(collectionName).get()
+    if(!this.userId){
+      console.log('no userId found');
+      await this.onAuthStateChanged()
+    }
+    console.log('anp user id found', this.userId);
+    let snapshots = await this.db.collection(collectionName)
+          .where('userId', '==', this.userId)
+          .get()
     let rows = []
     snapshots.forEach((doc) => {
       let row = doc.data();
@@ -72,15 +79,21 @@ class FirebaseWrapper{
     return await this.auth.signOut()
   }
 
-  checkLogin(user){
-    console.log('user', user);
-    this.userId = user.uid
-    if(user){
-      console.log('anp user', user.email, user);
-    } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html' || location.pathname === `signUpPage.html` || location.pathname ===`/C:/Users/ektai/Documents/dailyhishab/signUpPage.html`)) {
-      console.log('anp not logged in', location.pathname);
-      location.href = 'index.html'
-    }
+  async onAuthStateChanged(){
+    return new Promise((resolve, reject)=>{
+      this.auth.onAuthStateChanged((user)=>{
+        console.log('user', user);
+        this.userId = user.uid
+        if(user){
+          console.log('anp user', user.email, user);
+          resolve(user)
+        } else if(!user && !(location.pathname === '/index.html' || location.pathname === '/' || location.pathname === '/C:/Users/ektai/Documents/dailyhishab/index.html' || location.pathname === `signUpPage.html` || location.pathname ===`/C:/Users/ektai/Documents/dailyhishab/signUpPage.html`)) {
+          console.log('anp not logged in', location.pathname);
+          location.href = 'index.html'
+          reject()
+        }
+      })
+    })
   }
 
   async signup(email, password){
