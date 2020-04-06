@@ -7,7 +7,6 @@
     console.log('Grp type:', grouptype);
     // members =[email1, email2]
     // members = ["ekta.indo@gmail.com", "optimistanoop@gmail.com"]
-
     if (groupname == "" || grouptype == "") {
       alert("Please fill all details")
       return;

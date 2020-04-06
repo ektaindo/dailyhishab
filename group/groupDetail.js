@@ -46,7 +46,64 @@ async function showGroupExpenses() {
    tot.innerHTML = "<br><b>Total:"+ total
 }
 
+//get friends from friends Table
+//create dropdown of friends
+//add friends after selecting from grpDropdown
+//get the selected data
+async function frndDropdown() {
+      let frnds = await firebaseWrapper.getAll('friendRecord')
+      let frndDropdwn = document.getElementById("addfrnd")
+      let frnd = ""
+      for (let i = 0; i < frnds.length; i++) {
+        let friend = frnds[i]
+        frnd += `<option value="${friend.uId}">${friend.frndName}</option>`
+    }
+      if (frnds.length == 0) {
+        document.getElementById('frnd').innerHTML= "<h2>Data Not Found</h2>"
+        return;
+      }
+        let frndTemp = `<select id = "frnddrpdwn" ><option value="">--Select Friend--</option>${frnd}</select>`
+        frndDropdwn.innerHTML = frndTemp
+}
+
+async function addFriend() {
+  let frndElem = document.getElementById('frnddrpdwn')
+  let frndId = frndElem.value
+  console.log('friend:', frndId);
+  if (frndId=="") {
+    alert("Please select friend")
+    return;
+  }
+  let row =  {frndId, groupuId}
+  let insert = await firebaseWrapper.insert('groupMembers', row)
+  alert("GroupMember data submitted successfully")
+  resetData()
+}
+
+function resetData() {
+  let frndElem = document.getElementById('frnddrpdwn')
+  frndElem.value = ""
+}
+
+// async function showFrnds() {
+//      let frndRows = await firebaseWrapper.getRowsWhere("groupMembers", "groupuId", groupuId)
+//      let frnds = document.getElementById("frndsData")
+//      console.log(frndRows);
+//      let trs = ""
+//      let srNo = 0
+//      for (let i=0; i<frndRows.length; i++) {
+//        let frnd = frndRows[i]
+//        srNo++
+//        trs += "<tr><td>"+srNo+`</td><td><a href="../expense/editexpense.html?uId=${expense.uId}">`+ expense.name +"</a></td><td>"+ expense.amount+"</td><td>"+expense.date+"</td><td>"+expense.categories+"</td><td>"+expense.payment+ `</td><td><a href="editexpense.html?uId=${expense.uId}"><u>Edit</u></a></td><td><button type='button' class="btn btn-danger" name='' onclick='deleteExpRow("${expense.uId}")'>Delete</button><br></td></tr>`
+//        total += totalAmount
+//    }
+//    let template = `<br><table border=2><tr><th>S.No</th><th>Name</th><th>Amount</th><th>Date</th><th>Category</th><th>Paid By</th><th>Edit Row</th><th>Delete</th></tr>${trs }</table>`
+//    grpExpense.innerHTML = template
+// }
+
 
 
 showGroupExpenses()
 showGroupDetails()
+frndDropdown()
+// showFrnds()

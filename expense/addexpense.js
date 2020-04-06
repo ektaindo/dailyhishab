@@ -74,7 +74,7 @@ async function frndDropdown() {
         document.getElementById('frnd').innerHTML= "<h2>Data Not Found</h2>"
         return;
       }
-        let frndTemp = `<select id = "frnddrpdwn" ><option value="">--Select Groups--</option>${frnd}</select>`
+        let frndTemp = `<select id = "frnddrpdwn" ><option value="">--Select Friend--</option>${frnd}</select>`
         frndDropdwn.innerHTML = frndTemp
 }
 grpDropdown()
